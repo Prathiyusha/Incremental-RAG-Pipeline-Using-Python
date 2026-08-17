@@ -1,0 +1,80 @@
+[
+  {
+    "document_id": "DOC1",
+    "source_file": "azure_data_factory.pdf",
+    "batch_id": "batch_1",
+    "content_hash": "8893e91aac5c38ea7a9c530bea6eaa63b9f0c7413e33dd4b407afd85fb32ccb1"
+  },
+  {
+    "document_id": "DOC2",
+    "source_file": "data_engineering_fundamentals.pdf",
+    "batch_id": "batch_1",
+    "content_hash": "3fae10f020eb3ed02ff16a528adc578f73fc92c2933028e37dcf89c7a4c12832"
+  },
+  {
+    "document_id": "DOC3",
+    "source_file": "mysql_for_data_engineering.pdf",
+    "batch_id": "batch_1",
+    "content_hash": "d4dd4782295abd3f2b6b464902b5ce6c2bd8a1ea817583227c76cfa9f2a9b38d"
+  },
+  {
+    "document_id": "DOC4",
+    "source_file": "rag_fundamentals.pdf",
+    "batch_id": "batch_1",
+    "content_hash": "576000a4988be3871b44937184c6dc77ffd593ce8d5b61e43f8b23bff5330632"
+  },
+  {
+    "document_id": "DOC5",
+    "source_file": "azure_databricks.pdf",
+    "batch_id": "batch_2",
+    "content_hash": "b7abbb840e063ec3c7a996d870edb9f2642062a0415cdc823092dc49d5e2a127"
+  },
+  {
+    "document_id": "DOC6",
+    "source_file": "data_modeling.pdf",
+    "batch_id": "batch_2",
+    "content_hash": "bcd5f34bcf74f0c909dc522591637880f37483ae2307c1024877b352274aa6bf"
+  },
+  {
+    "document_id": "DOC7",
+    "source_file": "pyspark_and_spark.pdf",
+    "batch_id": "batch_2",
+    "content_hash": "c844b88ca7cfa52c7891dd9d956f87af4b2d2ef935aa311b05b575762e0f157a"
+  },
+  {
+    "document_id": "DOC8",
+    "source_file": "advanced_rag.pdf",
+    "batch_id": "batch_3",
+    "content_hash": "085ce7e9744cfa19fb93f7b6c2e5f8de6c1f1965fd6183b8febd221c7b1a0475"
+  },
+  {
+    "document_id": "DOC9",
+    "source_file": "incremental_data_pipelines.pdf",
+    "batch_id": "batch_3",
+    "content_hash": "eb2f03306dd3ba6eab9e54a691bd719fd31740d0c147dbf4072dcde9c71477f8"
+  },
+  {
+    "document_id": "DOC10",
+    "source_file": "python_for_data_engineering.pdf",
+    "batch_id": "batch_3",
+    "content_hash": "e9d10d9c09c23ea614d7c860138a947be445a3449baa0cac4e98eb5878bbd5ab"
+  },
+  {
+    "document_id": "DOC11",
+    "source_file": "apache_airflow.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "56dfc8e764d271c843e1084a73917e2fe1048531961aebc15a9f3399319f6f15"
+  },
+  {
+    "document_id": "DOC12",
+    "source_file": "apache_kafka.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "2da4a62497b3060f18eb95aa5ca51311a19a4be7380904e0a687af0dbe157a26"
+  },
+  {
+    "document_id": "DOC13",
+    "source_file": "data_lakehouse_architecture.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "0213bf54511757db380a432bf61229f64a94389722f566414a36d1e85b894a03"
+  }
+]

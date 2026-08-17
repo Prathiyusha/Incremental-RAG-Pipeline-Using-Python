@@ -1,0 +1,62 @@
+[
+  {
+    "chunk_id": "DOC11_chunk_1",
+    "document_id": "DOC11",
+    "title": "Apache Airflow",
+    "source_file": "apache_airflow.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "56dfc8e764d271c843e1084a73917e2fe1048531961aebc15a9f3399319f6f15",
+    "text": "Apache Airflow\n\nAirflow Overview\nApache Airflow is a workflow orchestration platform used to define, schedule, and monitor data\nworkflows. A workflow is represented as a Directed Acyclic Graph, or DAG, where tasks describe\nindividual units of work and dependencies describe the order in which those tasks should run. Airflow is\ncommonly used in data engineering to coordinate ingestion, transformation, validation, and downstream\nprocessing without embedding the business logic inside the scheduler itself.\nDAGs, Tasks, and Dependencies\nA DAG defines the structure of a workflow. Tasks may run Python functions, execute SQL, trigger\nexternal jobs, or call other systems through operators and hooks. Dependencies such as task_a >>\ntask_b make the execution order explicit. This is useful for pipelines where a transformation must wait\nfor ingestion to finish, or a validation step must succeed before data is published. Clear dependencies\nmake failures easier to isolate and reruns easier to manage.\nScheduling and Reruns\nAirflow can run workflows on a schedule or through manual triggers. Each scheduled run has its own\nexecution context, which helps teams reason about daily or hourly processing windows. Data pipelines\nshould still be designed to be idempotent, because orchestration tools may retry failed tasks or\noperators may rerun a historical execution. A safe rerun should not create duplicate data or corrupt\npreviously successful output.\nRetries, Monitoring, and Operational Visibility\nTasks can be configured with retries, retry",
+    "category": "Data Engineering"
+  },
+  {
+    "chunk_id": "DOC11_chunk_2",
+    "document_id": "DOC11",
+    "title": "Apache Airflow",
+    "source_file": "apache_airflow.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "56dfc8e764d271c843e1084a73917e2fe1048531961aebc15a9f3399319f6f15",
+    "text": "ration tools may retry failed tasks or\noperators may rerun a historical execution. A safe rerun should not create duplicate data or corrupt\npreviously successful output.\nRetries, Monitoring, and Operational Visibility\nTasks can be configured with retries, retry delays, and failure handling. Airflow records task states and\nworkflow history, allowing engineers to inspect which task failed and when it failed. Logs provide\noperational visibility, while dependencies ensure that downstream tasks do not continue after an\nupstream failure unless the workflow explicitly allows it. This separation between orchestration and\ntransformation logic keeps data workflows easier to maintain.\n\nAirflow in Data Engineering\nAirflow is most useful when a pipeline contains multiple independent systems or steps that must be\ncoordinated. For example, a workflow may ingest files, run a Spark transformation, validate row counts,\nand then refresh a downstream table. Airflow does not replace the processing engines that perform\nthose operations; it coordinates when and in what order they run. This distinction is important when\ndesigning modular data platforms.",
+    "category": "Data Engineering"
+  },
+  {
+    "chunk_id": "DOC12_chunk_1",
+    "document_id": "DOC12",
+    "title": "Apache Kafka",
+    "source_file": "apache_kafka.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "2da4a62497b3060f18eb95aa5ca51311a19a4be7380904e0a687af0dbe157a26",
+    "text": "Apache Kafka\n\nKafka Overview\nApache Kafka is a distributed event streaming platform used to move and retain streams of records\nbetween producers and consumers. Instead of requiring one application to call another application\ndirectly, producers write events to Kafka topics and consumers read those events independently. This\ndecoupling is useful in data engineering when many downstream systems need access to the same\nstream of business events.\nTopics, Partitions, and Offsets\nKafka stores events inside topics. Topics are divided into partitions so data can be distributed and\nprocessed in parallel. Within a partition, each record receives an offset that identifies its position in the\nordered log. Consumers track offsets to know which records have already been processed. Partitioning\nimproves scalability, but the chosen partition key also influences ordering because Kafka guarantees\nordering within a partition rather than across an entire topic.\nProducers and Consumers\nA producer publishes events to a topic, while a consumer reads events from one or more topic\npartitions. Consumer groups allow multiple consumers to share the work for a topic. Each partition is\nassigned to only one consumer within a consumer group at a time, which allows parallel processing\nwhile avoiding duplicate work inside that group. Different consumer groups can independently read the\nsame events for different use cases.\nStreaming Pipelines and Delivery Semantics\nKafka is often used as the transport layer for near-real-time pipelines. A downstream application may\nconsume events, transform them, and write results to a database,",
+    "category": "Data Engineering"
+  },
+  {
+    "chunk_id": "DOC12_chunk_2",
+    "document_id": "DOC12",
+    "title": "Apache Kafka",
+    "source_file": "apache_kafka.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "2da4a62497b3060f18eb95aa5ca51311a19a4be7380904e0a687af0dbe157a26",
+    "text": " the\nsame events for different use cases.\nStreaming Pipelines and Delivery Semantics\nKafka is often used as the transport layer for near-real-time pipelines. A downstream application may\nconsume events, transform them, and write results to a database, data lake, or another topic. Reliable\npipeline design requires careful handling of failures, retries, and offsets. At-least-once processing can\ncause a record to be handled more than once, so downstream operations should be idempotent when\nduplicates would be harmful.\n\nRetention and Replay\nKafka retains events for a configured period rather than deleting them immediately after consumption.\nThis makes replay possible. A consumer can reset its offset and process older events again, which is\nuseful for rebuilding derived data or recovering from a bug. Replay is powerful, but the downstream\npipeline must be designed to handle repeated historical events safely and consistently.",
+    "category": "Data Engineering"
+  },
+  {
+    "chunk_id": "DOC13_chunk_1",
+    "document_id": "DOC13",
+    "title": "Data Lakehouse Architecture",
+    "source_file": "data_lakehouse_architecture.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "0213bf54511757db380a432bf61229f64a94389722f566414a36d1e85b894a03",
+    "text": "Data Lakehouse Architecture\n\nLakehouse Overview\nA data lakehouse combines the flexible storage characteristics of a data lake with management features\ncommonly associated with data warehouses. Data can remain in scalable object storage while table\nformats and processing engines provide schema management, transactional updates, and reliable\nquerying. The goal is to reduce unnecessary movement between separate lake and warehouse\nsystems while supporting analytics and data engineering workloads on shared data.\nBronze, Silver, and Gold Layers\nA common lakehouse design organizes data into Bronze, Silver, and Gold layers. Bronze contains raw\nor minimally processed source data. Silver contains cleaned, standardized, and deduplicated data that\ncan be reused across workloads. Gold contains business-oriented tables or aggregates designed for\nreporting and analytics. These layers make data quality and transformation boundaries explicit without\nrequiring every project to adopt exactly the same physical folder structure.\nReliable Table Management\nLakehouse table formats can add transactional behavior and metadata management on top of files\nstored in object storage. This improves reliability when pipelines perform inserts, updates, or\nincremental processing. Schema enforcement and schema evolution help control how table structures\nchange over time. Versioned table history can also support debugging, auditing, and recovery when a\npipeline writes incorrect data.\nIncremental Processing\nLarge lakehouse pipelines should avoid repeatedly processing all historical data when only a small\namount has changed. Incremental strategies may use timestamps, watermarks, change data capture,\nor",
+    "category": "Data Engineering"
+  },
+  {
+    "chunk_id": "DOC13_chunk_2",
+    "document_id": "DOC13",
+    "title": "Data Lakehouse Architecture",
+    "source_file": "data_lakehouse_architecture.pdf",
+    "batch_id": "batch_4",
+    "content_hash": "0213bf54511757db380a432bf61229f64a94389722f566414a36d1e85b894a03",
+    "text": ", and recovery when a\npipeline writes incorrect data.\nIncremental Processing\nLarge lakehouse pipelines should avoid repeatedly processing all historical data when only a small\namount has changed. Incremental strategies may use timestamps, watermarks, change data capture,\nor source-specific identifiers to select new records. The transformation layer then merges or appends\nonly the required data. This reduces compute usage and shortens processing time while still keeping\ncurated tables current.\n\nServing Analytics\nGold-layer tables are commonly designed for downstream analytics. They may contain fact tables,\ndimensions, aggregates, or other business-ready structures. Data engineers should preserve lineage\nfrom raw inputs through transformations so users can understand where metrics originated. A\nlakehouse architecture is strongest when storage, processing, quality checks, and governance are\ntreated as connected parts of the same data lifecycle.",
+    "category": "Data Engineering"
+  }
+]
