@@ -110,9 +110,9 @@ Uses a question outside the document knowledge base to verify that the LLM does 
 
 The initial knowledge base contained:
 
-- `batch_1` – 3 PDFs
+- `batch_1` – 4 PDFs
 - `batch_2` – 3 PDFs
-- `batch_3` – 4 PDFs
+- `batch_3` – 3 PDFs
 - **10 documents total**
 
 After the initial pipeline was completed, a new `batch_4` containing 3 additional technical PDFs was added:
