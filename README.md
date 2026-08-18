@@ -154,7 +154,7 @@ incremental-rag-pipeline/
 │   └── 4_evaluation.ipynb
 │
 ├── architecture/
-│   └── incremental_rag_architecture.png
+│   └── architecture.png
 │
 ├── .env
 ├── .gitignore
