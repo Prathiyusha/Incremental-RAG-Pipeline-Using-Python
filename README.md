@@ -67,7 +67,7 @@ The retrieval notebook provides an interactive RAG workflow.
 - Retrieves the most relevant chunks and their metadata.
 - Sends the retrieved context to OpenAI `gpt-5.4-mini`.
 - Instructs the model to answer only from the retrieved context.
-- Returns the generated answer together with source file and chunk information.
+- Returns the generated answer together with source file, chunk, and batch information.
 
 ### 5. Source Traceability
 
@@ -92,8 +92,8 @@ Three evaluation checks were implemented:
 **Retrieval Hit@3**  
 Checks whether the expected category appears within the Top-3 retrieved chunks for each in-scope question.
 
-**Source Return Rate**  
-Checks whether retrieval returns source information for each evaluation question.
+**Relevant Source Return Rate**   
+Checks whether at least one retrieved result belongs to the expected category for each in-scope question.
 
 **Out-of-Scope Grounding Check**  
 Uses a question outside the document knowledge base to verify that the LLM does not generate an unsupported answer when the retrieved context is insufficient.
@@ -103,7 +103,7 @@ Uses a question outside the document knowledge base to verify that the LLM does 
 | Evaluation Check | Result |
 |---|---:|
 | Retrieval Hit@3 | 100% |
-| Source Return Rate | 100% |
+| Relevant Source Return Rate | 100% |
 | Out-of-Scope Grounding Check | PASS |
 
 ## Incremental Processing Validation
