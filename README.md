@@ -92,8 +92,8 @@ Three evaluation checks were implemented:
 **Retrieval Hit@3**  
 Checks whether the expected category appears within the Top-3 retrieved chunks for each in-scope question.
 
-**Relevant Source Return Rate**   
-Checks whether at least one retrieved result belongs to the expected category for each in-scope question.
+**Top-1 Category Accuracy**   
+Checks whether the highest-ranked retrieved chunk belongs to the expected category for each in-scope question.
 
 **Out-of-Scope Grounding Check**  
 Uses a question outside the document knowledge base to verify that the LLM does not generate an unsupported answer when the retrieved context is insufficient.
@@ -103,7 +103,7 @@ Uses a question outside the document knowledge base to verify that the LLM does 
 | Evaluation Check | Result |
 |---|---:|
 | Retrieval Hit@3 | 100% |
-| Relevant Source Return Rate | 100% |
+| Top-1 Category Accuracy | 80% |
 | Out-of-Scope Grounding Check | PASS |
 
 ## Incremental Processing Validation
